@@ -22,12 +22,16 @@ background:url("IMG_4493.jpeg") center/cover no-repeat;
 z-index:2;
 position:relative;
 max-width:700px;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 h1{
 color:white;
 font-size:44px;
 margin-bottom:20px;
+transition:opacity 1.5s;
 }
 
 .textbox{
@@ -35,6 +39,8 @@ background:rgba(0,0,0,0.45);
 padding:20px;
 border-radius:18px;
 display:inline-block;
+opacity:0;
+transition:opacity 2s;
 }
 
 p{
@@ -57,14 +63,19 @@ margin-top:20px;
 img{
 width:420px;
 border-radius:25px;
-margin-top:20px;
-display:none;
+margin-bottom:20px;
+opacity:0;
+transition:opacity 2s;
+}
+
+.show{
+opacity:1;
 }
 
 .emoji{
 position:absolute;
 z-index:1;
-opacity:0.55;
+opacity:0.6;
 animation:fall linear forwards;
 }
 
@@ -89,7 +100,7 @@ transform:translateY(110vh);
 <img id="photo1" src="IMG_4491.jpeg">
 <img id="photo2" src="IMG_4492.jpeg">
 
-<div class="textbox">
+<div class="textbox" id="textbox">
 <p id="text"></p>
 </div>
 
@@ -109,21 +120,26 @@ if(step===1){
 
 document.getElementById("title").innerText="Дякую тобі..";
 
-document.getElementById("photo1").style.display="block";
+document.getElementById("photo1").classList.add("show");
 
 document.getElementById("text").innerText=
 "Дякую що ти в мене така чудова мама, що завжди підтримуєш мене, оберігаєш та допомагаєш. Ти сама чудова мама в світі";
+
+document.getElementById("textbox").classList.add("show");
 
 }
 
 else if(step===2){
 
-document.getElementById("photo1").style.display="none";
-document.getElementById("text").innerText="";
+document.getElementById("photo1").classList.remove("show");
 
-document.getElementById("photo2").style.display="block";
+setTimeout(()=>{
+document.getElementById("photo2").classList.add("show");
+},500);
 
 document.getElementById("title").innerText="Люблю тебе ❤️";
+
+document.getElementById("text").innerText="";
 
 document.getElementById("btn").style.display="none";
 
@@ -145,11 +161,11 @@ el.style.left=Math.random()*100+"vw";
 
 el.style.fontSize=(Math.random()*25+30)+"px";
 
-el.style.animationDuration=(Math.random()*10+10)+"s";
+el.style.animationDuration=(Math.random()*12+12)+"s";
 
 document.body.appendChild(el);
 
-setTimeout(()=>{el.remove()},20000);
+setTimeout(()=>{el.remove()},25000);
 
 }
 
