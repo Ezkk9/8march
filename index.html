@@ -5,82 +5,118 @@
 <title>Для мами ❤️</title>
 
 <style>
-
-body{
-margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-font-family:Arial;
-overflow:hidden;
-background:url("IMG_4493.jpeg") center/cover no-repeat;
+/* Общие стили */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif; /* Добавлен запасной шрифт */
+    overflow: hidden;
+    background: url("IMG_4493.jpeg") center/cover no-repeat;
 }
 
-.container{
-position:relative;
-z-index:2;
-max-width:650px;
+.container {
+    z-index: 2;
+    position: relative;
+    max-width: 700px; /* Увеличил, чтобы было больше места для сдвига вправо */
+    width: 90%; /* Адаптивность */
 }
 
-h1{
-color:white;
-font-size:44px;
-margin-bottom:15px;
-transition:opacity 1s;
+h1 {
+    color: white;
+    font-size: 44px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Добавил тень для читаемости */
 }
 
-img{
-width:420px;
-border-radius:25px;
-display:block;
-margin:10px auto;
-opacity:0;
-transition:opacity 1.5s;
+/* Стили для текстового блока */
+.textbox {
+    background: rgba(0, 0, 0, 0.55); /* Немного увеличена непрозрачность для читаемости */
+    padding: 20px;
+    border-radius: 18px;
+    display: inline-block; /* Для сохранения центрирования по содержимому */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4); /* Добавил тень */
+    max-width: 100%; /* Убедимся, что не вылезает */
+    box-sizing: border-box; /* Включает padding в ширину */
 }
 
-.show{
-opacity:1;
+p {
+    color: white;
+    font-size: 24px;
+    margin: 10px 0;
+    line-height: 1.4; /* Увеличил межстрочный интервал */
 }
 
-.textbox{
-background:rgba(0,0,0,0.45);
-padding:18px;
-border-radius:18px;
-margin-top:10px;
-opacity:0;
-transition:opacity 1.5s;
+/* Стили для кнопки */
+button {
+    padding: 16px 34px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.3s ease; /* Плавный переход при наведении */
 }
 
-p{
-color:white;
-font-size:24px;
-margin:0;
+button:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px); /* Небольшой эффект при наведении */
 }
 
-button{
-margin-top:20px;
-padding:15px 30px;
-font-size:20px;
-border:none;
-border-radius:12px;
-background:white;
-cursor:pointer;
+/* Стили для изображений */
+img {
+    width: 420px;
+    max-width: 100%; /* Адаптивность для изображений */
+    border-radius: 25px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Добавил тень к фото */
+    display: block; /* Важно для работы max-height */
+    overflow: hidden; /* Обрезаем содержимое при max-height: 0 */
+    margin-top: 0; /* Начальное значение, будет анимироваться */
+    opacity: 0; /* Начальное значение, будет анимироваться */
+    max-height: 0; /* Начальное значение, будет анимироваться, скрывая изображение */
+    transform: translateY(20px); /* Начальное смещение для эффекта "выплывания" */
+    transition: max-height 0.8s ease-out, opacity 0.8s ease-out, margin-top 0.8s ease-out, transform 0.8s ease-out, margin-right 0.8s ease-out; /* Плавные переходы для всех нужных свойств */
+
+    /* Дефолтное центрирование для всех изображений */
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.emoji{
-position:absolute;
-z-index:1;
-opacity:0.6;
-animation:fall linear forwards;
+/* Класс для отображения изображения (плавное появление) */
+.img-show {
+    max-height: 500px; /* Достаточно большая высота, чтобы показать изображение */
+    opacity: 1;
+    margin-top: 20px; /* Отступ сверху при появлении */
+    transform: translateY(0); /* Возврат в исходное положение */
 }
 
-@keyframes fall{
-0%{transform:translateY(-120px);}
-100%{transform:translateY(110vh);}
+/* Специальное позиционирование для photo1 (чуть правее) */
+#photo1.img-show {
+    margin-left: auto; /* Отталкивает от левого края */
+    margin-right: 40px; /* Отступ от правого края, регулируй это значение для изменения "правее" */
 }
 
+/* Эмоджи */
+.emoji {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.55;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-120px);
+    }
+    100% {
+        transform: translateY(110vh);
+    }
+}
 </style>
 </head>
 
@@ -90,10 +126,10 @@ animation:fall linear forwards;
 
 <h1 id="title">Вітаю тебе з 8 березня!</h1>
 
-<img id="photo1" src="IMG_4491.jpeg">
-<img id="photo2" src="IMG_4492.jpeg">
+<img id="photo1" src="IMG_4491.jpeg" alt="Фотография 1">
+<img id="photo2" src="IMG_4492.jpeg" alt="Фотография 2">
 
-<div class="textbox" id="textbox">
+<div class="textbox">
 <p id="text"></p>
 </div>
 
@@ -102,68 +138,50 @@ animation:fall linear forwards;
 </div>
 
 <script>
+let step = 0;
 
-let step=0;
+function next() {
+    step++;
 
-function next(){
+    if (step === 1) {
+        document.getElementById("title").innerText = "Дякую тобі..";
 
-step++;
+        // Если photo2 была видна, скрываем ее плавно
+        document.getElementById("photo2").classList.remove("img-show");
 
-if(step===1){
+        // Показываем photo1 плавно и сдвигаем вправо
+        document.getElementById("photo1").classList.add("img-show");
 
-document.getElementById("title").innerText="Дякую тобі..";
+        document.getElementById("text").innerText =
+            "Дякую що ти в мене така чудова мама, що завжди підтримуєш мене, оберігаєш та допомагаєш. Ти сама чудова мама в світі";
 
-document.getElementById("photo1").classList.add("show");
+    } else if (step === 2) {
+        // Скрываем photo1 плавно
+        document.getElementById("photo1").classList.remove("img-show");
 
-document.getElementById("text").innerText=
-"Дякую що ти в мене така чудова мама, що завжди підтримуєш мене, оберігаєш та допомагаєш. Ти сама чудова мама в світі";
+        document.getElementById("text").innerText = ""; // Очищаем текст
 
-document.getElementById("textbox").classList.add("show");
+        // Показываем photo2 плавно (будет по центру, т.к. нет специфичных стилей)
+        document.getElementById("photo2").classList.add("img-show");
 
+        document.getElementById("title").innerText = "Люблю тебе ❤️";
+        document.getElementById("btn").style.display = "none";
+    }
 }
 
-else if(step===2){
-
-document.getElementById("photo1").classList.remove("show");
-
-setTimeout(()=>{
-document.getElementById("photo2").classList.add("show");
-},400);
-
-document.getElementById("title").innerText="Люблю тебе ❤️";
-
-document.getElementById("text").innerText="";
-
-document.getElementById("btn").style.display="none";
-
+function createEmoji() {
+    let el = document.createElement("div");
+    el.className = "emoji";
+    let arr = ["❤️", "🌸", "🌺", "🌷", "💮"];
+    el.innerText = arr[Math.floor(Math.random() * arr.length)];
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (Math.random() * 25 + 30) + "px";
+    el.style.animationDuration = (Math.random() * 10 + 10) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => { el.remove() }, 20000);
 }
 
-}
-
-function createEmoji(){
-
-let el=document.createElement("div");
-
-el.className="emoji";
-
-let arr=["❤️","🌸","🌺","🌷","💮"];
-
-el.innerText=arr[Math.floor(Math.random()*arr.length)];
-
-el.style.left=Math.random()*100+"vw";
-
-el.style.fontSize=(Math.random()*30+25)+"px";
-
-el.style.animationDuration=(Math.random()*12+12)+"s";
-
-document.body.appendChild(el);
-
-setTimeout(()=>el.remove(),24000);
-
-}
-
-setInterval(createEmoji,900);
-
+setInterval(createEmoji, 900);
 </script>
 
 </body>
