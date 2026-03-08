@@ -19,57 +19,54 @@ background:url("IMG_4493.jpeg") center/cover no-repeat;
 }
 
 .container{
-z-index:2;
 position:relative;
-max-width:700px;
-display:flex;
-flex-direction:column;
-align-items:center;
+z-index:2;
+max-width:650px;
 }
 
 h1{
 color:white;
 font-size:44px;
-margin-bottom:20px;
-transition:opacity 1.5s;
-}
-
-.textbox{
-background:rgba(0,0,0,0.45);
-padding:20px;
-border-radius:18px;
-display:inline-block;
-opacity:0;
-transition:opacity 2s;
-}
-
-p{
-color:white;
-font-size:24px;
-margin:10px 0;
-}
-
-button{
-padding:16px 34px;
-font-size:20px;
-border:none;
-border-radius:12px;
-background:white;
-color:black;
-cursor:pointer;
-margin-top:20px;
+margin-bottom:15px;
+transition:opacity 1s;
 }
 
 img{
 width:420px;
 border-radius:25px;
-margin-bottom:20px;
+display:block;
+margin:10px auto;
 opacity:0;
-transition:opacity 2s;
+transition:opacity 1.5s;
 }
 
 .show{
 opacity:1;
+}
+
+.textbox{
+background:rgba(0,0,0,0.45);
+padding:18px;
+border-radius:18px;
+margin-top:10px;
+opacity:0;
+transition:opacity 1.5s;
+}
+
+p{
+color:white;
+font-size:24px;
+margin:0;
+}
+
+button{
+margin-top:20px;
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:12px;
+background:white;
+cursor:pointer;
 }
 
 .emoji{
@@ -80,12 +77,8 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-120px);
-}
-100%{
-transform:translateY(110vh);
-}
+0%{transform:translateY(-120px);}
+100%{transform:translateY(110vh);}
 }
 
 </style>
@@ -135,7 +128,7 @@ document.getElementById("photo1").classList.remove("show");
 
 setTimeout(()=>{
 document.getElementById("photo2").classList.add("show");
-},500);
+},400);
 
 document.getElementById("title").innerText="Люблю тебе ❤️";
 
@@ -159,13 +152,13 @@ el.innerText=arr[Math.floor(Math.random()*arr.length)];
 
 el.style.left=Math.random()*100+"vw";
 
-el.style.fontSize=(Math.random()*25+30)+"px";
+el.style.fontSize=(Math.random()*30+25)+"px";
 
 el.style.animationDuration=(Math.random()*12+12)+"s";
 
 document.body.appendChild(el);
 
-setTimeout(()=>{el.remove()},25000);
+setTimeout(()=>el.remove(),24000);
 
 }
 
