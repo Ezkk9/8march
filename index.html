@@ -19,27 +19,32 @@ background:url("IMG_4493.jpeg") center/cover no-repeat;
 }
 
 .container{
-background:rgba(0,0,0,0.45);
-padding:40px;
-border-radius:20px;
 z-index:2;
 position:relative;
-max-width:600px;
+max-width:700px;
 }
 
 h1{
 color:white;
-font-size:42px;
+font-size:44px;
 margin-bottom:20px;
+}
+
+.textbox{
+background:rgba(0,0,0,0.45);
+padding:20px;
+border-radius:18px;
+display:inline-block;
 }
 
 p{
 color:white;
-font-size:22px;
+font-size:24px;
+margin:10px 0;
 }
 
 button{
-padding:15px 30px;
+padding:16px 34px;
 font-size:20px;
 border:none;
 border-radius:12px;
@@ -50,27 +55,22 @@ margin-top:20px;
 }
 
 img{
-width:300px;
-border-radius:20px;
+width:420px;
+border-radius:25px;
 margin-top:20px;
-opacity:0;
-transition:opacity 2s;
-}
-
-.show{
-opacity:1;
+display:none;
 }
 
 .emoji{
 position:absolute;
 z-index:1;
-opacity:0.35;
+opacity:0.55;
 animation:fall linear forwards;
 }
 
 @keyframes fall{
 0%{
-transform:translateY(-100px);
+transform:translateY(-120px);
 }
 100%{
 transform:translateY(110vh);
@@ -89,7 +89,9 @@ transform:translateY(110vh);
 <img id="photo1" src="IMG_4491.jpeg">
 <img id="photo2" src="IMG_4492.jpeg">
 
+<div class="textbox">
 <p id="text"></p>
+</div>
 
 <button id="btn" onclick="next()">Далі</button>
 
@@ -107,9 +109,7 @@ if(step===1){
 
 document.getElementById("title").innerText="Дякую тобі..";
 
-setTimeout(()=>{
-document.getElementById("photo1").classList.add("show");
-},3000);
+document.getElementById("photo1").style.display="block";
 
 document.getElementById("text").innerText=
 "Дякую що ти в мене така чудова мама, що завжди підтримуєш мене, оберігаєш та допомагаєш. Ти сама чудова мама в світі";
@@ -118,11 +118,14 @@ document.getElementById("text").innerText=
 
 else if(step===2){
 
-document.getElementById("photo2").classList.add("show");
+document.getElementById("photo1").style.display="none";
+document.getElementById("text").innerText="";
+
+document.getElementById("photo2").style.display="block";
+
+document.getElementById("title").innerText="Люблю тебе ❤️";
 
 document.getElementById("btn").style.display="none";
-
-document.getElementById("text").innerText="Люблю тебе ❤️";
 
 }
 
@@ -134,23 +137,23 @@ let el=document.createElement("div");
 
 el.className="emoji";
 
-let arr=["❤️","🌸","🌺","💮","🌷"];
+let arr=["❤️","🌸","🌺","🌷","💮"];
 
 el.innerText=arr[Math.floor(Math.random()*arr.length)];
 
 el.style.left=Math.random()*100+"vw";
 
-el.style.fontSize=(Math.random()*20+20)+"px";
+el.style.fontSize=(Math.random()*25+30)+"px";
 
-el.style.animationDuration=(Math.random()*6+8)+"s";
+el.style.animationDuration=(Math.random()*10+10)+"s";
 
 document.body.appendChild(el);
 
-setTimeout(()=>{el.remove()},12000);
+setTimeout(()=>{el.remove()},20000);
 
 }
 
-setInterval(createEmoji,800);
+setInterval(createEmoji,900);
 
 </script>
 
